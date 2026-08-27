@@ -39,7 +39,7 @@ print("\nProblem 4:")
 P = 0.001   #J/s
 A = 0.0005**2 * np.pi #m^2
 I = P/A       #W/m^2
-I_spectral = I / w_ba  *10**(-7)#J/m^2
+I_spectral = I / w_ba  /10**(-7)#J/m^2
 print(f'Spectral intensity {I_spectral = :.4e} J/m^2')
 
 Rate = B * I_spectral / c / eV_to_J
