@@ -53,6 +53,6 @@ print("\nProblem 5:")
 #for perfect on resonance vil matrixelement være max altså bare 1? Har \omega_L=\omega_ba hvertfald
 M = -m_e / c**2 * w_ba /hbar * r   #4.70
 # M = 1
-t = np.sqrt(2*c*e_0 / I) * m_e /c**2 * eV_to_J * w_ba / e * np.sqrt(1/np.exp(1) * M**2)
+t = np.sqrt(2*c*e_0 / I) * m_e /c**2 * eV_to_J * w_ba / e * np.sqrt(1/np.exp(1) / M**2)
 
 print(f'{t = :.4e} s')
