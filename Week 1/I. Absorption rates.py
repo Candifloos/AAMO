@@ -8,8 +8,9 @@ k_B = 8.617e-5 #eV/K
 eV_to_J = 1.602*10**(-19)
 e_0 = 8.85418782*10**(-12)#farad / m  - eller s^4*A^2/kg/m^3
 e = 1.60217663 * 10**(-19)  #coulomb
+a_0 = 5.29 * 10**(-11)
 
-r = 256/243/np.sqrt(2)
+r = 256/243/np.sqrt(2) * a_0
 B = (r)**2 * 4*np.pi**2 * c**3 * hbar / (3 * m_e**2 * alpha)
 print("Problem 1:")
 print(f"{B = :.4f} m^3 eV^-1 s^-2")
@@ -49,7 +50,7 @@ print("\nProblem 5:")
 #fra 4.4 t = sqrt(2ce_0/I_l) * m\omega_L / e * sqrt(|c_b(t)|^2 * |M(\omega_L)|^2)
 #for perfect on resonance vil matrixelement være max altså bare 1? Har \omega_L=\omega_ba hvertfald
 M = -m_e / c**2 * w_ba /hbar * r   #4.70
-M = 1
+# M = 1
 t = np.sqrt(2*c*e_0 / I) * m_e /c**2 * eV_to_J * w_ba / e * np.sqrt(1/np.exp(1) * M**2)
 
 print(f'{t = :.4e} s')
