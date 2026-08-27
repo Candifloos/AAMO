@@ -22,6 +22,7 @@ w_ba = (E(2) - E(1))/hbar
 print(f"{w_ba = :.4e} s^-1")
 rho = hbar*w_ba**3/(np.pi**2*c**3) * 1/(np.exp(hbar*w_ba/(k_B * T)) - 1)
 print(f"{rho = :.4e} eV s m^-3")
+print(f"rho {rho*eV_to_J :.4e} J s m^-3")
 
 I = rho * c
 print(f"{I = :.4e} eV m^-2")
@@ -31,6 +32,7 @@ print("\nProblem 3:")
 Rate = B * rho
 print(r"Absorption transition rate \dot N_ba / N_a = B_ba \rho(\omega_ba)")
 print(f"\t{Rate = :.4e} s^-1")
+#ikke effektivt at bruge en lampe på 2000K til at exciterere hydrogen, som ses senere er laser bedre
 
 
 print("\nProblem 4:")
