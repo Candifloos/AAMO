@@ -11,7 +11,7 @@ e = 1.60217663 * 10**(-19)  #coulomb
 a_0 = 5.29 * 10**(-11)
 
 r = 256/243/np.sqrt(2) * a_0
-B = (r)**2 * 4*np.pi**2 * c**3 * hbar / (3 * m_e**2 * alpha)
+B = (256/243/np.sqrt(2))**2 * 4*np.pi**2 * c**3 * hbar / (3 * m_e**2 * alpha)
 print("Problem 1:")
 print(f"{B = :.4f} m^3 eV^-1 s^-2")
 print(f"B = {B/(eV_to_J) :.4e} m^3 J^-1 s^-2")
