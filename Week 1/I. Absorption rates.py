@@ -51,8 +51,8 @@ print(f"\t{Rate = :.4e} s^-1")
 print("\nProblem 5:")
 #fra 4.4 t = sqrt(2ce_0/I_l) * m\omega_L / e * sqrt(|c_b(t)|^2 * |M(\omega_L)|^2)
 #for perfect on resonance vil matrixelement være max altså bare 1? Har \omega_L=\omega_ba hvertfald
-M = -m_e / c**2 * w_ba /hbar * r   #4.70
+M = -m_e / c**2 * w_ba /hbar * r   #4.70 smartere at bruge W_ba = \pi e^2/m^2e_0 I(\omega_ba)/\omega_ba |M_ba|^2, dk ligning
 # M = 1
-t = np.sqrt(2*c*e_0 / I) * m_e /c**2 * eV_to_J * w_ba / e * np.sqrt(1/np.exp(1) / M**2)
+t = np.sqrt(2*c*e_0 / I) * m_e /c**2 * eV_to_J * w_ba / e * np.sqrt(1/np.exp(1) / M**2) #*np.sqrt(3)
 
 print(f'{t = :.4e} s')
