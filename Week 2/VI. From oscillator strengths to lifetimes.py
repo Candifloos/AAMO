@@ -14,8 +14,8 @@ a_0 = 5.29 * 10**(-11)
 
 print("Problem 3)")
 f_3p2s, f_3p1s = 0.435, 0.0792
-f_2s3p = -2/5 * f_3p2s
-f_1s3p = -2/5 * f_3p1s
+f_2s3p = -1/3 * f_3p2s
+f_1s3p = -1/3 * f_3p1s
 
 rt3p = 2*hbar*alpha/m_e * (w_(2,3)**2 * abs(f_2s3p) + w_(1,3)**2 * abs(f_1s3p))
 t = 1/rt3p
@@ -23,8 +23,8 @@ print(f"{t = :.4e} s (5.4 ns from table)")
 
 print("\nProblem 4)")
 f_4s3p, f_4s2p = 0.0322, 0.00305
-f_3p4s = -5/2 * f_4s3p
-f_2p4s = -5/2 * f_4s2p
+f_3p4s = -3/1 * f_4s3p
+f_2p4s = -3/1 * f_4s2p
 
 rt4s = 2*hbar*alpha/m_e * (w_(3,4)**2 * abs(f_3p4s) + w_(2,4)**2 * abs(f_2p4s))
 t = 1/rt4s
@@ -33,10 +33,10 @@ print(f"{t = :.4e} s (230 ns from table)")
 
 
 f_4p1s, f_4p2s, f_4p3s, f_4p3d = 0.029, 0.103, 0.485, 0.011
-f_1s4p = -2/5 * f_4p1s
-f_2s4p = -2/5 * f_4p2s
-f_3s4p = -2/5 * f_4p3s
-f_3d4p = -7/5 * f_4p3d
+f_1s4p = -1/3 * f_4p1s
+f_2s4p = -1/3 * f_4p2s
+f_3s4p = -1/3 * f_4p3s
+f_3d4p = -5/3 * f_4p3d
 rt4p = 2*hbar*alpha/m_e * (w_(1,4)**2 * abs(f_1s4p) + w_(2,4)**2 * abs(f_2s4p) + w_(3,4)**2 * abs(f_3s4p) + w_(3,4)**2 * abs(f_3d4p))
 t = 1/rt4p
 
