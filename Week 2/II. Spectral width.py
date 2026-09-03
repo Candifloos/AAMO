@@ -22,7 +22,8 @@ m = 938.95*10**6      #eV
 p = 6.242*10**23      # eV/m^3
 
 sigma = np.pi * a_0**2
-v = np.sqrt(2*k_B*T/m * c**2)
+# v = np.sqrt(2*k_B*T/m * c**2)
+v = np.sqrt(8*k_B*T/(np.pi * m) * c**2) #average speed
 n = p/(k_B*T)
 
 W_c = n * sigma * v 
