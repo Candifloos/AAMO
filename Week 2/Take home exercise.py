@@ -35,23 +35,37 @@ W_ba = 4*np.pi**2/c/hbar/hbar * (e**2/(4 * np.pi * e_0)) * I_ba * 4*np.pi/3 * z_
 print(f"{W_ba = :.4e} s^-1")
 
 
-# dP = lambda t,P: W_ba * np.array([- P[0] + P[1], P[0] - P[1] *(1 + 6.27e8/W_ba)]) #Including spontaneous emission
+# dP = lambda t,P: W_ba * np.array([- P[0] + P[1], P[0] - P[1] * (1 + 6.27e8/W_ba)]) #Including spontaneous emission
 dP = lambda t,P: W_ba * np.array([- P[0] + P[1], P[0] - P[1]])
 sol = scsi.solve_ivp(dP, t_span = [0,10/W_ba], y0 = [1,0])
 
 c_2p = lambda t: 2*np.pi*e**2/(3 * c * e_0 * hbar**2) * I * z_ab**2 * t**2
 t_plot = np.linspace(sol.t[0], sol.t[-1],1000)
 dc_2p = lambda t: 2*np.pi*e**2/(3 * c * e_0 * hbar**2) * I * z_ab**2 * t * 2
-print(f"c_2p[-1] = {c_2p(t_plot[-1])}")
-print(f"dc_2p[-1] = {dc_2p(t_plot[-1])}")
+# print(f"c_2p[-1] = {c_2p(t_plot[-1])}")
+# print(f"dc_2p[-1] = {dc_2p(t_plot[-1])}")
 
+
+
+print("\nProblem 9)")
+F = lambda t: np.sqrt(2 * I/c/e_0) * np.sin(w_ba(2,1) * t) #on resonance
+dc = lambda t, c: np.array([-1j * F(t)/hbar * c[1] * np.exp(-1j*w_ba(2,1)*t)*e*z_ab,
+                            -1j * F(t)/hbar * c[0] * np.exp( 1j*w_ba(2,1)*t)*e*z_ab])
+sol9 = scsi.solve_ivp(dc, t_span = [0,0.1e-9], y0 = [1 + 0j,0 + 0j], rtol=3e-5, atol=1e-8)
+c_1s2 = np.abs(sol9.y[0,:])**2
+c_2p2 = np.abs(sol9.y[1,:])**2
 
 
 fig, ax = plt.subplots()
-ax.set(xlabel="Time [s]", ylabel = "Population")
-ax.plot(sol.t, sol.y[0,:], label="$P_{1s}$")
-ax.plot(sol.t, sol.y[1,:], label="$P_{2p}$")
-ax.plot(t_plot, c_2p(t_plot), label="Monochromatic")
+ax.set(xlabel="Time [s]", ylabel = "Population", title="Excitation from 1s to 2p")
+ax.plot(sol.t, sol.y[0,:], label="rate $P_{1s}$")
+ax.plot(sol.t, sol.y[1,:], label="rate $P_{2p}$")
+
+ax.plot(t_plot, c_2p(t_plot), label="perturb. monochromatic")
+
+ax.plot(sol9.t, c_1s2, label="9) $|c_{1s}|^2$")
+ax.plot(sol9.t, c_2p2, label="9) $|c_{2p}|^2$")
+
 ax.legend()
 ax.grid()
 ax.axvline(1/W_ba, color="grey", linestyle="--")
